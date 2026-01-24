@@ -1,0 +1,14 @@
+C:\Users\Chuy\RobotLang\bin\Debug\net9.0\RobotLang.exe
+C:\Users\Chuy\RobotLang\bin\Debug\net9.0\RobotLang.deps.json
+C:\Users\Chuy\RobotLang\bin\Debug\net9.0\RobotLang.runtimeconfig.json
+C:\Users\Chuy\RobotLang\bin\Debug\net9.0\RobotLang.dll
+C:\Users\Chuy\RobotLang\bin\Debug\net9.0\RobotLang.pdb
+C:\Users\Chuy\RobotLang\obj\Debug\net9.0\RobotLang.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Chuy\RobotLang\obj\Debug\net9.0\RobotLang.AssemblyInfoInputs.cache
+C:\Users\Chuy\RobotLang\obj\Debug\net9.0\RobotLang.AssemblyInfo.cs
+C:\Users\Chuy\RobotLang\obj\Debug\net9.0\RobotLang.csproj.CoreCompileInputs.cache
+C:\Users\Chuy\RobotLang\obj\Debug\net9.0\RobotLang.dll
+C:\Users\Chuy\RobotLang\obj\Debug\net9.0\refint\RobotLang.dll
+C:\Users\Chuy\RobotLang\obj\Debug\net9.0\RobotLang.pdb
+C:\Users\Chuy\RobotLang\obj\Debug\net9.0\RobotLang.genruntimeconfig.cache
+C:\Users\Chuy\RobotLang\obj\Debug\net9.0\ref\RobotLang.dll
