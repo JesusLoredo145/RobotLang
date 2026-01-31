@@ -23,21 +23,21 @@ namespace RobotLang
 
             var lines = File.ReadAllLines(path);
 
-            // Config del brazo: 4 articulaciones por defecto (extensible)
+            // Config del brazo 4 articulaciones por defecto 
             var robotConfig = RobotConfig.Default4Joints();
-            var robot = new MockRobotTransport(); // luego cambias a Serial/WiFi
+            var robot = new MockRobotTransport(); 
 
             var interpreter = new Interpreter(robotConfig, robot);
 
             try
             {
                 interpreter.Run(lines);
-                Console.WriteLine("\n✅ Programa finalizado.");
+                Console.WriteLine("\nPrograma finalizado.");
                 return 0;
             }
             catch (LangError e)
             {
-                Console.WriteLine($"\n❌ Error en línea {e.Line}: {e.Message}");
+                Console.WriteLine($"\nError en línea {e.Line}: {e.Message}");
                 if (!string.IsNullOrWhiteSpace(e.SourceLine))
                 {
                     Console.WriteLine($"   {e.SourceLine}");
@@ -49,9 +49,7 @@ namespace RobotLang
         }
     }
 
-    // =========================
     // Errores del lenguaje
-    // =========================
     public class LangError : Exception
     {
         public int Line { get; }
@@ -66,20 +64,15 @@ namespace RobotLang
         }
     }
 
-    // =========================
     // Runtime State
-    // =========================
     public sealed class RuntimeState
     {
         public Dictionary<string, Value> Variables { get; } = new(StringComparer.OrdinalIgnoreCase);
-
-        // Estado lógico del brazo (grados o unidades arbitrarias)
+        // Estado lógico del brazo grados o unidades 
         public Dictionary<string, int> JointPositions { get; } = new(StringComparer.OrdinalIgnoreCase);
     }
 
-    // =========================
     // Value (int/string/bool)
-    // =========================
     public readonly struct Value
     {
         public enum KindType { Int, String, Bool }
@@ -136,9 +129,9 @@ namespace RobotLang
         }
     }
 
-    // =========================
-    // Config + Safety del brazo
-    // =========================
+    
+    // Config + seguridad del brazo
+    
     public sealed class JointSpec
     {
         public string Name { get; init; } = "";
@@ -158,8 +151,7 @@ namespace RobotLang
             c.Joints["HOMBRO"] = new JointSpec { Name = "HOMBRO", Min = 10, Max = 170, Home = 90 };
             c.Joints["CODO"] = new JointSpec { Name = "CODO", Min = 0, Max = 180, Home = 90 };
             c.Joints["MUÑECA"] = new JointSpec { Name = "MUÑECA", Min = 0, Max = 180, Home = 90 };
-            // Si luego quieres pinza como articulación:
-            // c.Joints["PINZA"] = new JointSpec { Name="PINZA", Min=0, Max=100, Home=0 };
+                //Aqui podemos agregar mas articulaciones
             return c;
         }
     }
@@ -191,9 +183,7 @@ namespace RobotLang
             Console.WriteLine($"[ROBOT] WAIT {ms}ms");
     }
 
-    // =========================
     // Intérprete principal
-    // =========================
     public sealed class Interpreter
     {
         private readonly RobotConfig _robotConfig;
@@ -220,7 +210,7 @@ namespace RobotLang
             InterpretBlock(lines, 0, lines.Length);
         }
 
-        // Interpreta un bloque [start, end)
+        // Interpreta un bloque 
         private void InterpretBlock(string[] lines, int start, int end)
         {
             int i = start;
@@ -237,7 +227,7 @@ namespace RobotLang
                     continue;
                 }
 
-                // ===== Declaración: entero|cadena nombre = expr;
+                //  Declaración: entero|cadena nombre = expr;
                 {
                     var m = Regex.Match(line, @"^(entero|cadena)\s+([A-Za-z_]\w*)\s*=\s*(.+);$");
                     if (m.Success)
@@ -262,7 +252,7 @@ namespace RobotLang
                     }
                 }
 
-                // ===== Asignación: nombre = expr; (solo si ya existe)
+                //  Asignación: nombre = expr; (solo si ya existe)
                 {
                     var m = Regex.Match(line, @"^([A-Za-z_]\w*)\s*=\s*(.+);$");
                     if (m.Success && _state.Variables.ContainsKey(m.Groups[1].Value))
@@ -283,7 +273,7 @@ namespace RobotLang
                     }
                 }
 
-                // ===== Imprimir(expr);
+                //  Imprimir(expr);
                 {
                     var m = Regex.Match(line, @"^Imprimir\((.+)\);$");
                     if (m.Success)
@@ -296,7 +286,7 @@ namespace RobotLang
                     }
                 }
 
-                // ===== Pausar();
+                //  Pausar();
                 if (Regex.IsMatch(line, @"^Pausar\(\);$"))
                 {
                     Console.Write("\n[Ejecución pausada] ENTER para continuar...");
@@ -305,10 +295,7 @@ namespace RobotLang
                     continue;
                 }
 
-                // =========================
                 // === COMANDOS DEL BRAZO ===
-                // =========================
-
                 // Centrar();
                 if (Regex.IsMatch(line, @"^Centrar\(\);$", RegexOptions.IgnoreCase))
                 {
@@ -323,7 +310,7 @@ namespace RobotLang
                     continue;
                 }
 
-                // Esperar(ms);
+                // Esperar;
                 {
                     var m = Regex.Match(line, @"^Esperar\(\s*(.+)\s*\);$", RegexOptions.IgnoreCase);
                     if (m.Success)
@@ -365,10 +352,7 @@ namespace RobotLang
                     }
                 }
 
-                // =========================
-                // === BLOQUES: Si / Mientras
-                // =========================
-
+                //  BLOQUES: Si / Mientras
                 // Si cond Entonces
                 if (line.StartsWith("Si", StringComparison.OrdinalIgnoreCase) &&
                     line.Contains("Entonces", StringComparison.OrdinalIgnoreCase))
@@ -479,9 +463,7 @@ namespace RobotLang
         }
     }
 
-    // =========================
     // Evaluador de expresiones (sin eval)
-    // =========================
     public sealed class ExprEvaluator
     {
         private readonly RuntimeState _state;
@@ -828,3 +810,4 @@ namespace RobotLang
         }
     }
 }
+
