@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -23,8 +23,8 @@ namespace RobotLang
 
             var lines = File.ReadAllLines(path);
 
-            // Config del brazo 4 articulaciones por defecto 
-            var robotConfig = RobotConfig.Default4Joints();
+            // Config del brazo 3 articulaciones primero
+            var robotConfig = RobotConfig.Default3Joints();
             var robot = new MockRobotTransport(); 
 
             var interpreter = new Interpreter(robotConfig, robot);
@@ -144,14 +144,13 @@ namespace RobotLang
     {
         public Dictionary<string, JointSpec> Joints { get; } = new(StringComparer.OrdinalIgnoreCase);
 
-        public static RobotConfig Default4Joints()
+        public static RobotConfig Default3Joints()
         {
             var c = new RobotConfig();
-            c.Joints["BASE"] = new JointSpec { Name = "BASE", Min = 0, Max = 180, Home = 90 };
             c.Joints["HOMBRO"] = new JointSpec { Name = "HOMBRO", Min = 10, Max = 170, Home = 90 };
             c.Joints["CODO"] = new JointSpec { Name = "CODO", Min = 0, Max = 180, Home = 90 };
             c.Joints["MUÑECA"] = new JointSpec { Name = "MUÑECA", Min = 0, Max = 180, Home = 90 };
-                //Aqui podemos agregar mas articulaciones
+                //Aqui podemos agregar mas articulaciones, primero hacer que estas 3 funcionen bien
             return c;
         }
     }
