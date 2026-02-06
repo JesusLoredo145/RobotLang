@@ -14,18 +14,24 @@ namespace RobotLang
             Console.OutputEncoding = Encoding.UTF8;
 
             var path = args.Length > 0 ? args[0] : "programa.txt";
+            var port = args.Length > 1 ? args[1] : null;
+
             if (!File.Exists(path))
             {
                 Console.WriteLine($"No existe el archivo: {path}");
-                Console.WriteLine("Uso: dotnet run -- programa.txt");
+                Console.WriteLine("Uso: dotnet run -- programa.txt [COM3]");
                 return 1;
             }
 
             var lines = File.ReadAllLines(path);
 
-            // Config del brazo 3 articulaciones primero
+            // Config del brazo: 3 articulaciones (HOMBRO, CODO, MUÑECA)
             var robotConfig = RobotConfig.Default3Joints();
-            var robot = new MockRobotTransport(); 
+
+            // Transport: mock si no pasas COM, real si pasas COM3
+            IRobotTransport robot = port is null
+                ? new MockRobotTransport()
+                : new ArduinoSerialTransport(port, 115200);
 
             var interpreter = new Interpreter(robotConfig, robot);
 
@@ -46,7 +52,17 @@ namespace RobotLang
                 }
                 return 2;
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"\nError de comunicación/ejecución: {ex.Message}");
+                return 3;
+            }
+            finally
+            {
+                if (robot is IDisposable d) d.Dispose();
+            }
         }
+
     }
 
     // Errores del lenguaje

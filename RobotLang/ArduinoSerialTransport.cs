@@ -43,8 +43,17 @@ namespace RobotLang
 
         public void MoveJoint(string joint, int target)
         {
-            SendExpectOk($"MOVE {joint.ToUpperInvariant()} {target}");
+            joint = joint.ToUpperInvariant()
+                         .Replace("Ñ", "N")
+                         .Replace("Á", "A")
+                         .Replace("É", "E")
+                         .Replace("Í", "I")
+                         .Replace("Ó", "O")
+                         .Replace("Ú", "U");
+
+            SendExpectOk($"MOVE {joint} {target}");
         }
+
 
         public void WaitMs(int ms)
         {

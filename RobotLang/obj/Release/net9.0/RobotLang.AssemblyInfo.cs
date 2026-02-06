@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RobotLang")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea976c5f1e394df61b309812750e9d7c1b947d98")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+723ea689c47ec83fa60c8f9cd7cd994d908f458b")]
 [assembly: System.Reflection.AssemblyProductAttribute("RobotLang")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RobotLang")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
