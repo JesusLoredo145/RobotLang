@@ -6,3 +6,7 @@ Mi idea es hacer algo mas facil, tipo:
 Muevete a la izquierda 90 grados,
 aun faltan cosas por afinar
 paciencia...
+
+
+
+Para hacer pruebas con Arduino es necesario descargar también el RobotLangCom, tenerlo abierto y correr el comando. Después subiré un tutorial más detallado.
