@@ -1,4 +1,33 @@
-bin/Debug/net9.0/Microsoft.Data.SqlClient.dll
+# build outputs
 bin/
 obj/
+[Bb]in/
+[Oo]bj/
+
+# visual studio
 .vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# vs code
+.vscode/
+
+# rider
+.idea/
+
+# dotnet tooling
+*.cache
+*.log
+
+# test results
+TestResults/
+
+# publish outputs
+publish/
+artifacts/
+
+# os
+.DS_Store
+Thumbs.db
