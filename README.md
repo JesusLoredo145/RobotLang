@@ -68,8 +68,11 @@ Para ejecutar contra un Arduino conectado:
 
 Si no se especifica un puerto, el sistema usa un modo simulacion que imprime los comandos en consola.
 
-##Sintaxis basica del lenguaje.
-COMENTARIOS: Las lineas que empiezan con # son ignoradas.
+---
+
+## Sintaxis basica del lenguaje.
+
+-COMENTARIOS: Las lineas que empiezan con # son ignoradas.
 "#Esto es un comentarios".
 
 DECLARACION DE VARIABLES: 
@@ -88,8 +91,8 @@ PAUSA MANUAL:
 Detiene la ejecucion hasta que el usuario presione enter
 Pausar();
 
-
-##Control del brazo robotico
+---
+## Control del brazo robotico
 
 Centrar el brazo:
 Lleva todas las articulaciones a su posicion inicial
@@ -105,7 +108,8 @@ Esperar un tiempo
 Esperar(500);
 El tiempo esta en milisegundos y se valida para evitar valores peligrosos.
 
-##Condiciones
+---
+## Condiciones
 Si:
 Si x > 5 Entonces
     Imprimir("x es mayor a 5");
@@ -117,8 +121,8 @@ Mientras x < 10 Hacer
     x = x + 1;
 FinMientras
 Los bucles tienen una proteccion contra ciclos infinitos.
-
-##Expresiones soportadas
+---
+## Expresiones soportadas
 operadores aritmeticos: + - * /
 comparaciones: < <= > >= == !=
 logicos: and or not
@@ -141,8 +145,8 @@ Cuando ocurre un error, RobotLang muestra:
 Ejemplo:
 Error en línea 7: Articulación desconocida: 'BRAZO'
 Esto facilita mucho la depuracion del programa.
-
-##Modo simulacion vs modo real
+---
+## Modo simulacion vs modo real
 
 MODO SIMULACION:
 --no requiere hardware
@@ -169,19 +173,19 @@ Posibles extensiones futuras
 -interfaz grafica
 -comunicacion wifi o bluetooth
 -exportar a otros controladores
-
-##Estado actual
+---
+## Estado actual
 
 El lenguaje esta completamente funcional.
 El interprete, el evaluador de expresiones y la simulacion estan estables.
 La integracion con Arduino por serial esta lista para control real de servomotores.
-
-##Licencia
+---
+## Licencia
 Proyecto educativo y experimental.
 Uso libre para aprendizaje, pruebas y extension.
+---
 
-
-##Ejemplos de scripts que sirven y que no:
+## Ejemplos de scripts que sirven y que no:
 # ejemplo 1: centrar y mover articulaciones con esperas
 Centrar();
 Esperar(500);
@@ -210,7 +214,7 @@ Si delta >= 1 and delta <= 20 Entonces
     Esperar(200);
     Mover(HOMBRO, -delta);
 FinSi
-
+---
 Ejemplos que no funcionan
 # ejemplo 1: articulacion desconocida
 Centrar();
