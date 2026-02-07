@@ -1,3 +1,6 @@
 Centrar();
 Mover(MUÑECA, 5);
-Imprimir("OK desde RobotLang");
+Mover(HOMBRO, 5);
+Mover(CODO, 5);
+
+Imprimir("FIN");
