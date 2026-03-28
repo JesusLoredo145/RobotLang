@@ -1,6 +1,12 @@
 Centrar();
+
 Mover(MUÑECA, 5);
+Esperar(500);
+
 Mover(HOMBRO, 5);
+Esperar(500);
+
 Mover(CODO, 5);
+Esperar(500);
 
 Imprimir("FIN");
